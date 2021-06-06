@@ -16,8 +16,8 @@ jobs:
     # 打包构建
     - name: Build
       uses: actions/setup-node@master
-    - run: npm install
-    - run: npm run build
+    - run: yarn install
+    - run: yarn run build
     - run: tar -zcvf release.tgz .nuxt static nuxt.config.js package.json package-lock.json pm2.config.json
 
     # 发布 Release
@@ -56,5 +56,5 @@ jobs:
           cd /root/web-data
           wget https://github.com/husky0601/realword-nuxt/releases/latest/download/release.tgz -O release.tgz
           tar zxvf release.tgz
-          npm install --production
+          yarn install --production
           pm2 reload pm2.config.json
